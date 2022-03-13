@@ -5,43 +5,85 @@ import {
   Center,
   Flex,
   Heading,
-  HStack,
-  Img,
+  Image,
   Link as ChakraLink,
   SimpleGrid,
   Stack,
   Text,
 } from "@chakra-ui/react";
-import type { NextPage } from "next";
+import { motion, useAnimation } from "framer-motion";
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
-// import styles from "../styles/Home.module.css";
+import { NextPage } from "next/types";
+import { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 
 interface AppInformationProps {
   children: React.ReactElement;
   slot?: "start" | "end";
   backgroundColor?: string;
+  id?: string;
 }
 
 const AppInformation = ({
   children,
   slot = "end",
   backgroundColor = "",
+  id,
 }: AppInformationProps) => {
+  const { ref, inView } = useInView({ threshold: 0.3 });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
+  const duration = 0.4;
+
+  const startVariants = {
+    hidden: { x: "-100vw" },
+    visible: { x: 0 },
+  };
+  const endVariants = {
+    hidden: { x: "100vw" },
+    visible: { x: 0 },
+  };
+
   return (
-    <Box backgroundColor={backgroundColor} paddingY={32}>
+    <Box id={id} ref={ref} backgroundColor={backgroundColor} paddingY={32}>
       <SimpleGrid columns={2}>
-        {slot === "start" && <Center padding={32}>{children}</Center>}
+        {slot === "start" && (
+          <motion.div
+            initial="hidden"
+            animate={controls}
+            variants={startVariants}
+            transition={{ duration }}
+          >
+            <Center padding={32}>{children}</Center>
+          </motion.div>
+        )}
         <Center>
-          <Image
-            src="/../public/assets/phone.png"
-            alt="app preview"
-            height={697}
-            width={336}
-          />
+          <motion.div
+            initial="hidden"
+            animate={controls}
+            variants={slot === "start" ? endVariants : startVariants}
+            transition={{ duration }}
+          >
+            <Image src="/static/images/phone.png" alt="app preview" />
+          </motion.div>
         </Center>
-        {slot === "end" && <Center padding={32}>{children}</Center>}
+        {slot === "end" && (
+          <motion.div
+            initial="hidden"
+            animate={controls}
+            variants={endVariants}
+            transition={{ duration }}
+          >
+            <Center padding={32}>{children}</Center>
+          </motion.div>
+        )}
       </SimpleGrid>
     </Box>
   );
@@ -62,10 +104,8 @@ const Home: NextPage = () => {
             <Flex flexDirection="column">
               <Flex padding={8}>
                 <Image
-                  src="/../public/assets/logo.png"
+                  src={"/static/images/logo.png"}
                   alt="Powley Pharma Quizzer"
-                  width={75}
-                  height={50}
                 />
               </Flex>
 
@@ -82,7 +122,16 @@ const Home: NextPage = () => {
                     <Button size="lg" colorScheme="twitter">
                       Download
                     </Button>
-                    <Button size="lg" colorScheme="teal" variant="outline">
+                    <Button
+                      size="lg"
+                      colorScheme="teal"
+                      variant="outline"
+                      onClick={() =>
+                        document
+                          .getElementById("info")
+                          ?.scrollIntoView({ behavior: "smooth" })
+                      }
+                    >
                       Find out more
                     </Button>
                   </ButtonGroup>
@@ -97,17 +146,36 @@ const Home: NextPage = () => {
               bg="primary"
             >
               <Flex justifyContent="flex-end">
-                <HStack spacing={10} padding={8}>
-                  <ChakraLink color="light" fontSize="2xl">
+                <Flex gap={10} padding={8}>
+                  {/* <ChakraLink color="light" fontSize="2xl"> */}
+                  <Text
+                    color={"light"}
+                    fontSize="2xl"
+                    transition={"1"}
+                    _hover={{ textDecoration: "underline" }}
+                  >
                     <Link href="#">Our App</Link>
-                  </ChakraLink>
-                  <ChakraLink color="light" fontSize="2xl">
+                  </Text>
+                  {/* </ChakraLink> */}
+                  {/* <ChakraLink color="light" fontSize="2xl"> */}
+                  <Text
+                    color={"light"}
+                    fontSize="2xl"
+                    _hover={{ textDecoration: "underline" }}
+                  >
                     <Link href="#">Quiz</Link>
-                  </ChakraLink>
-                  <ChakraLink color="light" fontSize="2xl">
+                  </Text>
+                  {/* </ChakraLink> */}
+                  {/* <ChakraLink color="light" fontSize="2xl"> */}
+                  <Text
+                    color={"light"}
+                    fontSize="2xl"
+                    _hover={{ textDecoration: "underline" }}
+                  >
                     <Link href="#">About Us</Link>
-                  </ChakraLink>
-                </HStack>
+                  </Text>
+                  {/* </ChakraLink> */}
+                </Flex>
               </Flex>
               <Flex
                 flex="1"
@@ -125,17 +193,15 @@ const Home: NextPage = () => {
 
                 <Box marginBottom="-20px">
                   <Image
-                    src="/../public/assets/hero-phone.png"
+                    src="/static/images/hero-phone.png"
                     alt="app preview"
-                    height={552}
-                    width={336}
                   />
                 </Box>
               </Flex>
             </Flex>
           </SimpleGrid>
         </Box>
-        <AppInformation>
+        <AppInformation id="info">
           <Text fontSize={"3xl"}>
             Randomly generate an unlimited amount of quizzes to help you revise
             on the go
