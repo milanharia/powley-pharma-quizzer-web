@@ -71,7 +71,7 @@ const AppInformation = ({
             variants={slot === "start" ? endVariants : startVariants}
             transition={{ duration }}
           >
-            <Image src="/static/images/phone.png" alt="app preview" />
+            <Image src="./static/images/phone.png" alt="app preview" />
           </motion.div>
         </Center>
         {slot === "end" && (
@@ -104,7 +104,7 @@ const Home: NextPage = () => {
             <Flex flexDirection="column">
               <Flex padding={8}>
                 <Image
-                  src={"/static/images/logo.png"}
+                  src={"./static/images/logo.png"}
                   alt="Powley Pharma Quizzer"
                 />
               </Flex>
@@ -193,7 +193,7 @@ const Home: NextPage = () => {
 
                 <Box marginBottom="-20px">
                   <Image
-                    src="/static/images/hero-phone.png"
+                    src="./static/images/hero-phone.png"
                     alt="app preview"
                   />
                 </Box>
