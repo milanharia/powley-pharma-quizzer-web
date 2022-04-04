@@ -19,7 +19,6 @@ import {
   useColorMode,
   VStack,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
 import Head from "next/head";
 import { NextPage } from "next/types";
 import { useRef, useState } from "react";
@@ -55,56 +54,30 @@ const Home: NextPage = () => {
             >
               Powley Pharma Quizzer
             </Heading>
-            {/* <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-            > */}
-            <Heading textAlign="center" fontSize={["4xl", "title"]}>
-              Powley Pharma Quizzer
-            </Heading>
-            {/* </motion.div> */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.3 }}
-            >
-              <Text align={"center"} fontSize={["md", "xl"]} fontWeight="light">
-                Created by the students, for the students
-              </Text>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 0 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.6 }}
-            >
-              <Flex justifyContent="center" gap={4}>
-                <Button px={8} size="md" colorScheme="twitter">
-                  Download
-                </Button>
-                <Button
-                  size={"md"}
-                  colorScheme="teal"
-                  variant="outline"
-                  onClick={() =>
-                    document
-                      .getElementById("info")
-                      ?.scrollIntoView({ behavior: "smooth" })
-                  }
-                >
-                  Find out more
-                </Button>
-              </Flex>
-            </motion.div>
+
+            <Text align={"center"} fontSize={["md", "xl"]} fontWeight="light">
+              Created by the students, for the students
+            </Text>
+            <Flex justifyContent="center" gap={4}>
+              <Button px={8} size="md" colorScheme="twitter">
+                Download
+              </Button>
+              <Button
+                size={"md"}
+                colorScheme="teal"
+                variant="outline"
+                onClick={() =>
+                  document
+                    .getElementById("info")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+              >
+                Find out more
+              </Button>
+            </Flex>
           </Flex>
           <Flex justifyContent={"center"} alignItems="end" overflowY="hidden">
-            <motion.div
-              initial={{ y: "100vh" }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.9 }}
-            >
-              <Image src="./static/images/hero-phone.png" alt="app preview" />
-            </motion.div>
+            <Image src="./static/images/hero-phone.png" alt="app preview" />
           </Flex>
         </Flex>
         <AppInformation
@@ -136,25 +109,18 @@ const Home: NextPage = () => {
         </AppInformation>
         <Box h="100vh" py={16} px={4}>
           <Center>
-            <motion.div
-              initial="hidden"
-              // animate={controls}
-              // variants={slot === "start" ? endVariants : startVariants}
-              // transition={{ duration }}
-            >
-              <VStack spacing={8}>
-                <Text fontSize={"xl"} textAlign="center" pt={4}>
-                  Try a demo of the app here and see for yourself...
+            <VStack spacing={8}>
+              <Text fontSize={"xl"} textAlign="center" pt={4}>
+                Try a demo of the app here and see for yourself...
+              </Text>
+              <AppDemo />
+              <Box>
+                <Text fontStyle="italic" textAlign="center">
+                  *Please note this demo does not replicate the look and feel of
+                  the mobile application and is only meant as a guide.
                 </Text>
-                <AppDemo />
-                <Box>
-                  <Text fontStyle="italic" textAlign="center">
-                    *Please note this demo does not replicate the look and feel
-                    of the mobile application and is only meant as a guide.
-                  </Text>
-                </Box>
-              </VStack>
-            </motion.div>
+              </Box>
+            </VStack>
           </Center>
         </Box>
       </main>

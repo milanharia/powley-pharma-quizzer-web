@@ -13,7 +13,7 @@ import { PageProps, Pages } from "../types";
 
 export function HomePage({ setNextPage }: PageProps) {
   return (
-    // <SlideFade in={true} offsetY="20px">
+    <SlideFade in={true} offsetY="20px">
       <Flex flexDirection="column" gap={3} pt={4}>
         <Flex flexDirection="column" px={4} gap={3}>
           <Flex flexDirection="column" gap="2">
@@ -138,6 +138,6 @@ export function HomePage({ setNextPage }: PageProps) {
           />
         </Box>
       </Flex>
-    {/* </SlideFade> */}
+    </SlideFade>
   );
 }
