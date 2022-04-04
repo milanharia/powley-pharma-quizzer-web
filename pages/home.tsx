@@ -13,6 +13,7 @@ import {
   Heading,
   Image,
   Input,
+  SimpleGrid,
   Stack,
   Text,
   useColorMode,
@@ -38,62 +39,55 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Flex h="100vh" flexDirection={"column"}>
-          <Flex flex={1} flexDirection="column" placeContent={"center"}>
-            <Flex justifyContent={"center"}>
-              <Stack spacing={8} maxW={"80vw"}>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3 }}
+        <Flex h={"calc(100vh - 3rem)"} w="100vw" flexDirection="column">
+          <Flex
+            flexDirection="column"
+            placeContent="center"
+            flex={1}
+            p={2}
+            gap="4"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Heading textAlign="center" fontSize={["4xl", "title"]}>
+                Powley Pharma Quizzer
+              </Heading>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.3 }}
+            >
+              <Text align={"center"} fontSize={["md", "xl"]} fontWeight="light">
+                Created by the students, for the students
+              </Text>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 0 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.6 }}
+            >
+              <Flex justifyContent="center" gap={4}>
+                <Button px={8} size="md" colorScheme="twitter">
+                  Download
+                </Button>
+                <Button
+                  size={"md"}
+                  colorScheme="teal"
+                  variant="outline"
+                  onClick={() =>
+                    document
+                      .getElementById("info")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
                 >
-                  <Heading
-                    textAlign="center"
-                    fontSize={["4xl", "4xl", "4xl", "title"]}
-                  >
-                    Powley Pharma Quizzer
-                  </Heading>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.3 }}
-                >
-                  <Text
-                    align={"center"}
-                    fontSize={["lg", "2xl"]}
-                    fontWeight="light"
-                  >
-                    Created by the students, for the students
-                  </Text>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, scale: 1.1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.6 }}
-                >
-                  <Flex gap={[4, 8]} justifyContent="center">
-                    <Button size="lg" colorScheme="twitter" px={16}>
-                      Download
-                    </Button>
-                    <Button
-                      px={16}
-                      size="lg"
-                      colorScheme="teal"
-                      variant="outline"
-                      onClick={() =>
-                        document
-                          .getElementById("info")
-                          ?.scrollIntoView({ behavior: "smooth" })
-                      }
-                    >
-                      Find out more
-                    </Button>
-                  </Flex>
-                </motion.div>
-              </Stack>
-            </Flex>
+                  Find out more
+                </Button>
+              </Flex>
+            </motion.div>
           </Flex>
           <Flex justifyContent={"center"} alignItems="end" overflowY="hidden">
             <motion.div
@@ -105,19 +99,19 @@ const Home: NextPage = () => {
             </motion.div>
           </Flex>
         </Flex>
-        {/* <AppInformation
+        <AppInformation
           id="info"
           backgroundColor={
             colorMode === "light" ? "medium.light" : "medium.dark"
           }
         >
-          <Text fontSize={"3xl"}>
+          <Text fontSize={["lg", "lg", "2xl", "3xl"]}>
             Randomly generate an unlimited amount of quizzes to help you revise
             on the go
           </Text>
         </AppInformation>
         <AppInformation slot="start">
-          <Text fontSize={"3xl"}>
+          <Text fontSize={["lg", "lg", "2xl", "3xl"]}>
             Each question gives instant feedback, with an explanation of the
             correct answer, and where to find the information in relevant
             sources such as the BNF
@@ -128,11 +122,11 @@ const Home: NextPage = () => {
             colorMode === "light" ? "medium.light" : "medium.dark"
           }
         >
-          <Text fontSize={"3xl"}>
+          <Text fontSize={["lg", "lg", "2xl", "3xl"]}>
             View your results and the questions you completed.
           </Text>
-        </AppInformation> */}
-        <Box paddingY={32} h="80vh">
+        </AppInformation>
+        <Box h="100vh" py={16} px={4}>
           <Center>
             <motion.div
               initial="hidden"
@@ -141,13 +135,13 @@ const Home: NextPage = () => {
               // transition={{ duration }}
             >
               <VStack spacing={8}>
-                <Text fontSize={"3xl"}>
+                <Text fontSize={"xl"} textAlign="center" pt={4}>
                   Try a demo of the app here and see for yourself...
                 </Text>
                 <AppDemo />
                 <Box>
-                  <Text fontStyle="italic">
-                    Please note this demo does not replicate the look and feel
+                  <Text fontStyle="italic" textAlign="center">
+                    *Please note this demo does not replicate the look and feel
                     of the mobile application and is only meant as a guide.
                   </Text>
                 </Box>
