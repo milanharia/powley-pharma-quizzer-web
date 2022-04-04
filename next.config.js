@@ -8,9 +8,9 @@ const nextConfig = {
   //     "/ap-grid-layout": { page: "/ap-grid-layout" },
   //   };
   // },
-  assetPrefix: !debug
-    ? "https://anotherplanet-io.github.io/Next-React-Components/"
-    : "",
+  // assetPrefix: !debug
+  //   ? "https://anotherplanet-io.github.io/Next-React-Components/"
+  //   : "",
 };
 
 module.exports = nextConfig;
