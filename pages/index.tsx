@@ -24,6 +24,7 @@ import Head from "next/head";
 import { NextPage } from "next/types";
 import { useRef, useState } from "react";
 import { AppDemo, AppInformation } from "../components/home";
+import "animate.css";
 
 const Home: NextPage = () => {
   const { colorMode } = useColorMode();
@@ -47,15 +48,22 @@ const Home: NextPage = () => {
             p={2}
             gap="4"
           >
-            <motion.div
+            <Heading
+              className="animate__animated animate__bounce"
+              textAlign="center"
+              fontSize={["4xl", "title"]}
+            >
+              Powley Pharma Quizzer
+            </Heading>
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
-            >
-              <Heading textAlign="center" fontSize={["4xl", "title"]}>
-                Powley Pharma Quizzer
-              </Heading>
-            </motion.div>
+            > */}
+            <Heading textAlign="center" fontSize={["4xl", "title"]}>
+              Powley Pharma Quizzer
+            </Heading>
+            {/* </motion.div> */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
