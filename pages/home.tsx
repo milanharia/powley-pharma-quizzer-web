@@ -47,15 +47,15 @@ const Home: NextPage = () => {
             p={2}
             gap="4"
           >
-            {/* <motion.div
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
-            > */}
-            <Heading textAlign="center" fontSize={["4xl", "title"]}>
-              Powley Pharma Quizzer
-            </Heading>
-            {/* </motion.div> */}
+            >
+              <Heading textAlign="center" fontSize={["4xl", "title"]}>
+                Powley Pharma Quizzer
+              </Heading>
+            </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

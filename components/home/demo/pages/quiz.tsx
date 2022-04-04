@@ -327,64 +327,64 @@ export function QuizPage({ setNextPage, incrementScore }: DataPageProps) {
   }
 
   return (
-    // <SlideFade in={true} offsetY="20px">
-    <Flex flexDirection="column">
-      <Toolbar
-        start={
-          <Box pl={4} pb={1}>
-            <FontAwesomeIcon
-              height="1.5rem"
-              width="1.5rem"
-              icon={faCircleExclamation}
-              color={"#e44444"}
-              cursor="not-allowed"
-              opacity={0.5}
-            />
-          </Box>
-        }
-        end={
-          <Box pr={4} pb={1}>
-            <FontAwesomeIcon
-              height="1.5rem"
-              width="1.5rem"
-              icon={faBookmark}
-              color="#7579E7"
-              cursor="not-allowed"
-              opacity={0.5}
-            />
-          </Box>
-        }
-      >{`Question ${counter + 1} of 10`}</Toolbar>
-      <Card>
-        <Stack spacing={4}>
-          <Text color="dark">{question.question}</Text>
-          <Box>
-            {question.options.map((option, index) => (
-              <AnswerButton
-                onClick={() => handleAnswerClicked(option)}
-                key={index}
-              >
-                {option.option}
-              </AnswerButton>
-            ))}
-          </Box>
-          <Collapse in={showExplanation}>
-            <Stack spacing={4}>
-              <Text color="dark">{question.explanation}</Text>
-              <Button
-                borderRadius={"2rem"}
-                isFullWidth
-                colorScheme="blue"
-                onClick={handleNextQuestion}
-              >
-                {counter < 9 ? "Next Question" : "Finish Quiz"}
-              </Button>
-            </Stack>
-          </Collapse>
-        </Stack>
-      </Card>
-    </Flex>
-    // </SlideFade>
+    <SlideFade in={true} offsetY="20px">
+      <Flex flexDirection="column">
+        <Toolbar
+          start={
+            <Box pl={4} pb={1}>
+              <FontAwesomeIcon
+                height="1.5rem"
+                width="1.5rem"
+                icon={faCircleExclamation}
+                color={"#e44444"}
+                cursor="not-allowed"
+                opacity={0.5}
+              />
+            </Box>
+          }
+          end={
+            <Box pr={4} pb={1}>
+              <FontAwesomeIcon
+                height="1.5rem"
+                width="1.5rem"
+                icon={faBookmark}
+                color="#7579E7"
+                cursor="not-allowed"
+                opacity={0.5}
+              />
+            </Box>
+          }
+        >{`Question ${counter + 1} of 10`}</Toolbar>
+        <Card>
+          <Stack spacing={4}>
+            <Text color="dark">{question.question}</Text>
+            <Box>
+              {question.options.map((option, index) => (
+                <AnswerButton
+                  onClick={() => handleAnswerClicked(option)}
+                  key={index}
+                >
+                  {option.option}
+                </AnswerButton>
+              ))}
+            </Box>
+            <Collapse in={showExplanation}>
+              <Stack spacing={4}>
+                <Text color="dark">{question.explanation}</Text>
+                <Button
+                  borderRadius={"2rem"}
+                  isFullWidth
+                  colorScheme="blue"
+                  onClick={handleNextQuestion}
+                >
+                  {counter < 9 ? "Next Question" : "Finish Quiz"}
+                </Button>
+              </Stack>
+            </Collapse>
+          </Stack>
+        </Card>
+      </Flex>
+    </SlideFade>
   );
 }
 

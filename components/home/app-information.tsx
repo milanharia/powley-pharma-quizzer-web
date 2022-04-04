@@ -40,12 +40,39 @@ export function AppInformation({
     <Box id={id} ref={ref} backgroundColor={backgroundColor} paddingY={32}>
       <SimpleGrid columns={2}>
         {slot === "start" && (
-          <Center padding={[4, 4, 32, 32]}>{children}</Center>
+          <Center padding={[4, 4, 32, 32]}>
+            <motion.div
+              initial="hidden"
+              animate={controls}
+              variants={startVariants}
+              transition={{ duration }}
+            >
+              {children}
+            </motion.div>
+          </Center>
         )}
         <Center padding={[4, 4, 32, 32]}>
-          <Image src="./static/images/phone.png" alt="app preview" />
+          <motion.div
+            initial="hidden"
+            animate={controls}
+            variants={slot === "start" ? endVariants : startVariants}
+            transition={{ duration }}
+          >
+            <Image src="./static/images/phone.png" alt="app preview" />
+          </motion.div>
         </Center>
-        {slot === "end" && <Center padding={[4, 4, 32, 32]}>{children}</Center>}
+        {slot === "end" && (
+          <Center padding={[4, 4, 32, 32]}>
+            <motion.div
+              initial="hidden"
+              animate={controls}
+              variants={endVariants}
+              transition={{ duration }}
+            >
+              {children}
+            </motion.div>
+          </Center>
+        )}
       </SimpleGrid>
     </Box>
   );
