@@ -46,6 +46,7 @@ export function SmallCard({
   bg,
   topic = false,
   disabled = false,
+  slot,
 }: {
   title: string;
   subtitle: string;
@@ -53,6 +54,7 @@ export function SmallCard({
   bg: string;
   topic?: boolean;
   disabled?: boolean;
+  slot?: "left" | "right";
 }) {
   return (
     <Flex
@@ -60,6 +62,8 @@ export function SmallCard({
       h={topic ? "10.5rem" : "9rem"}
       borderRadius="0.5rem"
       padding="4"
+      ml={slot === "right" ? 0.25 : undefined}
+      mr={slot === "left" ? 0.25 : undefined}
       bg={bg}
       direction="column"
       opacity={disabled ? 0.75 : 1}
@@ -67,7 +71,7 @@ export function SmallCard({
       _hover={disabled ? undefined : { opacity: 0.9 }}
     >
       <Box flex={1}>
-        <Text color="light" fontSize={topic ? "xl" : "2xl"}>
+        <Text color="light" fontSize={"xl"}>
           {title}
         </Text>
         <Text pt={topic ? 2 : undefined} color="light">

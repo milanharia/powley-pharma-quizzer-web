@@ -36,6 +36,7 @@ export function HomePage({ setNextPage }: PageProps) {
           />
           <Flex justifyContent={"space-between"}>
             <SmallCard
+              slot="left"
               disabled
               bg="linear-gradient(0deg, #fda980 0%, #f7cb6d 100%)"
               title="Bookmarks"
@@ -50,6 +51,7 @@ export function HomePage({ setNextPage }: PageProps) {
               }
             />
             <SmallCard
+              slot="right"
               disabled
               bg="linear-gradient(180deg, #fa3b74 0%, #f17da0 100%)"
               title="Progression"
