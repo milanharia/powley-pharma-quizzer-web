@@ -38,9 +38,9 @@ export function AppInformation({
 
   return (
     <Box id={id} ref={ref} backgroundColor={backgroundColor} paddingY={32}>
-      <SimpleGrid columns={2}>
+      <SimpleGrid columns={2} maxW={"1600px"} margin="auto">
         {slot === "start" && (
-          <Center padding={[4, 4, 32, 32]}>
+          <Center padding={[4, 4, 8, 32]}>
             <motion.div
               initial="hidden"
               animate={controls}
@@ -51,7 +51,7 @@ export function AppInformation({
             </motion.div>
           </Center>
         )}
-        <Center padding={[4, 4, 32, 32]}>
+        <Center padding={[4, 4, 16, 32]}>
           <motion.div
             initial="hidden"
             animate={controls}
@@ -62,7 +62,7 @@ export function AppInformation({
           </motion.div>
         </Center>
         {slot === "end" && (
-          <Center padding={[4, 4, 32, 32]}>
+          <Center padding={[4, 4, 8, 32]}>
             <motion.div
               initial="hidden"
               animate={controls}

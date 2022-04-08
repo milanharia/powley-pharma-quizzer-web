@@ -13,10 +13,18 @@ import {
   Heading,
   Image,
   Input,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
   SimpleGrid,
   Stack,
   Text,
   useColorMode,
+  useMediaQuery,
   VStack,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
@@ -27,6 +35,8 @@ import { AppDemo, AppInformation } from "../components/home";
 
 const Home: NextPage = () => {
   const { colorMode } = useColorMode();
+  const [openModal, setOpenModal] = useState(false);
+
   return (
     <>
       <Head>
@@ -71,7 +81,13 @@ const Home: NextPage = () => {
               transition={{ duration: 0.3, delay: 0.6 }}
             >
               <Flex justifyContent="center" gap={4}>
-                <Button px={8} size="md" colorScheme="twitter">
+                <Button
+                  as="a"
+                  px={8}
+                  size="md"
+                  colorScheme="twitter"
+                  href="https://linktr.ee/powleypharma"
+                >
                   Download
                 </Button>
                 <Button
@@ -95,7 +111,11 @@ const Home: NextPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.9 }}
             >
-              <Image src="./static/images/hero-phone.png" alt="app preview" />
+              <Image
+                maxH="50vh"
+                src="./static/images/hero-phone.png"
+                alt="app preview"
+              />
             </motion.div>
           </Flex>
         </Flex>
@@ -126,7 +146,7 @@ const Home: NextPage = () => {
             View your results and the questions you completed.
           </Text>
         </AppInformation>
-        <Box h="100vh" py={16} px={4}>
+        <Box h={["auto", "auto", "100vh", "100vh"]} py={16} px={4}>
           <Center>
             <motion.div
               initial="hidden"
@@ -138,13 +158,37 @@ const Home: NextPage = () => {
                 <Text fontSize={"xl"} textAlign="center" pt={4}>
                   Try a demo of the app here and see for yourself...
                 </Text>
-                <AppDemo />
-                <Box>
-                  <Text fontStyle="italic" textAlign="center">
-                    *Please note this demo does not replicate the look and feel
-                    of the mobile application and is only meant as a guide.
-                  </Text>
+                <Box display={["block", "block", "none", "none"]}>
+                  <Button
+                    colorScheme="twitter"
+                    size="lg"
+                    onClick={() => setOpenModal(true)}
+                  >
+                    Try demo
+                  </Button>
+                  <Modal
+                    onClose={() => setOpenModal(false)}
+                    size={"full"}
+                    isOpen={openModal}
+                  >
+                    <ModalOverlay />
+                    <ModalContent>
+                      <ModalHeader>Powley Pharma Quizzer Demo</ModalHeader>
+                      <ModalCloseButton />
+                      <ModalBody>
+                        <AppDemo />
+                      </ModalBody>
+                    </ModalContent>
+                  </Modal>
                 </Box>
+                <Box display={["none", "none", "block", "block"]}>
+                  <AppDemo />
+                  <Box></Box>
+                </Box>
+                <Text fontStyle="italic" textAlign="center">
+                  *Please note this demo does not replicate the look and feel of
+                  the mobile application and is only meant as a guide.
+                </Text>
               </VStack>
             </motion.div>
           </Center>
