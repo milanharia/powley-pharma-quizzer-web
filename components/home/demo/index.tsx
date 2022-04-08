@@ -28,7 +28,7 @@ export function AppDemo() {
         backgroundImage={"./static/images/phone-background.png"}
         backgroundPosition="center"
         backgroundSize="cover"
-        height={["80vh", "800px"]}
+        height={["75vh", "800px"]}
         width={["95vw", "400px"]}
         borderRadius="1rem"
         border="5px solid black"
