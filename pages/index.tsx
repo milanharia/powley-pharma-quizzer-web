@@ -20,6 +20,7 @@ import Head from "next/head";
 import { NextPage } from "next/types";
 import { useState } from "react";
 import { AppDemo, AppInformation } from "../components/home";
+import { Footer } from "../components/ui/footer";
 import { Header } from "../components/ui/header";
 
 const Home: NextPage = () => {
@@ -200,6 +201,7 @@ const Home: NextPage = () => {
           </Center>
         </Box>
       </main>
+      <Footer />
     </>
   );
 };

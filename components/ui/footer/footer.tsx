@@ -24,10 +24,9 @@ export function Footer() {
       bg={colorMode === "light" ? "light" : "dark"}
       justifyContent={["center", "space-between"]}
       p={8}
-      mt={8}
     >
       <Text m="auto">&copy; Powley Pharma - All rights reserved</Text>
-      <HStack spacing={3} m="auto" pt={"0.25rem"}>
+      <HStack spacing={3} m="auto" pt={["0.5rem", 0]}>
         <Icon>apple.svg</Icon>
         <Icon>android.png</Icon>
         <Icon>facebook.svg</Icon>

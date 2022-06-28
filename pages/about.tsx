@@ -1,6 +1,7 @@
 import { Box, Fade, Heading, Text } from "@chakra-ui/react";
 import { NextPage } from "next";
 import Head from "next/head";
+import { Footer } from "../components/ui/footer";
 import { Header } from "../components/ui/header";
 
 const About: NextPage = () => {
@@ -17,13 +18,7 @@ const About: NextPage = () => {
       </Head>
       <Header />
       <main>
-        <Box
-          maxW="1100px"
-          px="1rem"
-          pt={["1rem", "3rem"]}
-          m="auto"
-          h="calc(100vh - 12rem)"
-        >
+        <Box maxW="1100px" px="1rem" pt={["1rem", "3rem"]} m="auto">
           <Heading fontSize={["4xl", "6xl"]}>About Us</Heading>
           <Text mt={[4, 8]} fontSize={["md", "xl"]} fontWeight="light">
             We are a group of recently registered pharmacists (and aspiring web
@@ -48,6 +43,7 @@ const About: NextPage = () => {
           </Text>
         </Box>
       </main>
+      <Footer />
     </>
   );
 };
