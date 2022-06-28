@@ -1,7 +1,7 @@
 import { SunIcon, MoonIcon, HamburgerIcon } from "@chakra-ui/icons";
-import Link from "next/link";
 import {
   Box,
+  Button,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
@@ -12,6 +12,7 @@ import {
   Flex,
   IconButton,
   Image,
+  Input,
   Link as ChakraLink,
   Switch,
   useColorMode,
@@ -31,27 +32,22 @@ export function Header() {
       zIndex={999}
       justifyContent={"space-between"}
       alignItems="center"
-      background="none"
-      // bg={colorMode === "light" ? "white" : "dark"}
-      // boxShadow="0px 3px 5px 0px rgba(0,0,0,0.05)"
+      bg={colorMode === "light" ? "white" : "dark"}
+      boxShadow="0px 3px 5px 0px rgba(0,0,0,0.05)"
     >
       <Flex>
-        <Link href="/" passHref>
-          <Box p={4}>
-            <Image
-              cursor="pointer"
-              maxH="4rem"
-              maxW="4rem"
-              px={colorMode === "light" ? 0 : 3}
-              src={
-                colorMode === "light"
-                  ? "./static/images/new-logo.png"
-                  : "./static/images/classic-mode-logo.png"
-              }
-              alt="Powley Pharma Quizzer"
-            />
-          </Box>
-        </Link>
+        <Box padding="4">
+          <Image
+            maxH="4rem"
+            maxW="4rem"
+            src={
+              colorMode === "light"
+                ? "./static/images/logo.png"
+                : "./static/images/classic-mode-logo.png"
+            }
+            alt="Powley Pharma Quizzer"
+          />
+        </Box>
       </Flex>
       <Flex
         display={["none", "none", "flex"]}
@@ -59,18 +55,15 @@ export function Header() {
         padding={8}
         alignItems="center"
       >
-        {/* <Link href="#" passHref>
-          <ChakraLink fontSize="2xl">Our App</ChakraLink>
-        </Link>
-        <Link href="#" passHref>
-          <ChakraLink fontSize="2xl">Quiz</ChakraLink>
-        </Link> */}
-        <Link href="/about" passHref>
-          <ChakraLink fontSize="2xl">About Us</ChakraLink>
-        </Link>
+        <ChakraLink fontSize="2xl">Our App</ChakraLink>
+
+        <ChakraLink fontSize="2xl">Quiz</ChakraLink>
+
+        <ChakraLink fontSize="2xl">About Us</ChakraLink>
+
         <Flex gap={1.5}>
           <SunIcon />
-          <Switch isChecked={colorMode === "dark"} onChange={toggleColorMode} />
+          {/* <Switch isChecked={colorMode === "dark"} onChange={toggleColorMode} /> */}
           <MoonIcon />
         </Flex>
       </Flex>
@@ -81,7 +74,7 @@ export function Header() {
         ref={btnRef}
         colorScheme="black"
         onClick={() => setIsOpen(true)}
-        mr={4}
+        pr={4}
       >
         <HamburgerIcon />
       </IconButton>
@@ -97,18 +90,9 @@ export function Header() {
           <DrawerHeader>Powley Pharma Quizzer</DrawerHeader>
           <DrawerBody>
             <Flex gap={4} flexDirection="column">
-              {/* <Link href="#" passHref>
-                <ChakraLink fontSize="2xl">Our App</ChakraLink>
-              </Link>
-              <Link href="#" passHref>
-                <ChakraLink fontSize="2xl">Quiz</ChakraLink>
-              </Link> */}
-              <Link href="/" passHref>
-                <ChakraLink fontSize="2xl">Home</ChakraLink>
-              </Link>
-              <Link href="/about" passHref>
-                <ChakraLink fontSize="2xl">About Us</ChakraLink>
-              </Link>
+              <ChakraLink fontSize="2xl">Our App</ChakraLink>
+              <ChakraLink fontSize="2xl">Quiz</ChakraLink>
+              <ChakraLink fontSize="2xl">About Us</ChakraLink>
             </Flex>
           </DrawerBody>
           <DrawerFooter>

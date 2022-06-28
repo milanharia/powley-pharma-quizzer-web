@@ -3,7 +3,7 @@ import { mode } from "@chakra-ui/theme-tools";
 
 const config: ThemeConfig = {
   initialColorMode: "light",
-  useSystemColorMode: false,
+  useSystemColorMode: true,
 };
 
 const styles = {
@@ -22,7 +22,6 @@ const colors = {
   white: "#ffffff",
   light: "#B9FFFC",
   medium: { light: "#B9FFFC", dark: "#271925" },
-  custom: { light: "#99FEFF", dark: "#271925" },
   answerButton: { default: "#E2E2E5", light: "#E6E6E6" },
 };
 

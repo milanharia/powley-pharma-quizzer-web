@@ -2,19 +2,15 @@ import {
   Box,
   Button,
   Center,
-  Drawer,
-  DrawerBody,
-  DrawerCloseButton,
-  DrawerContent,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerOverlay,
   Flex,
   Heading,
   Image,
-  Input,
-  SimpleGrid,
-  Stack,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
   Text,
   useColorMode,
   VStack,
@@ -22,11 +18,13 @@ import {
 import { motion } from "framer-motion";
 import Head from "next/head";
 import { NextPage } from "next/types";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { AppDemo, AppInformation } from "../components/home";
 
 const Home: NextPage = () => {
   const { colorMode } = useColorMode();
+  const [openModal, setOpenModal] = useState(false);
+
   return (
     <>
       <Head>
@@ -48,9 +46,9 @@ const Home: NextPage = () => {
             gap="4"
           >
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0, y: 0, scaleX: 0.75 }}
+              animate={{ opacity: 1, y: 0, scaleX: 1 }}
+              transition={{ duration: 0.5, type: "tween" }}
             >
               <Heading textAlign="center" fontSize={["4xl", "title"]}>
                 Powley Pharma Quizzer
@@ -71,7 +69,13 @@ const Home: NextPage = () => {
               transition={{ duration: 0.3, delay: 0.6 }}
             >
               <Flex justifyContent="center" gap={4}>
-                <Button px={8} size="md" colorScheme="twitter">
+                <Button
+                  as="a"
+                  px={8}
+                  size="md"
+                  colorScheme="twitter"
+                  href="https://linktr.ee/powleypharma"
+                >
                   Download
                 </Button>
                 <Button
@@ -95,14 +99,18 @@ const Home: NextPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.9 }}
             >
-              <Image src="./static/images/hero-phone.png" alt="app preview" />
+              <Image
+                maxH="50vh"
+                src="./static/images/hero-phone.png"
+                alt="app preview"
+              />
             </motion.div>
           </Flex>
         </Flex>
         <AppInformation
           id="info"
           backgroundColor={
-            colorMode === "light" ? "medium.light" : "medium.dark"
+            colorMode === "light" ? "custom.light" : "custom.dark"
           }
         >
           <Text fontSize={["lg", "lg", "2xl", "3xl"]}>
@@ -119,14 +127,14 @@ const Home: NextPage = () => {
         </AppInformation>
         <AppInformation
           backgroundColor={
-            colorMode === "light" ? "medium.light" : "medium.dark"
+            colorMode === "light" ? "custom.light" : "custom.dark"
           }
         >
           <Text fontSize={["lg", "lg", "2xl", "3xl"]}>
             View your results and the questions you completed.
           </Text>
         </AppInformation>
-        <Box h="100vh" py={16} px={4}>
+        <Box h={["auto", "auto", "100vh", "100vh"]} py={16} px={4}>
           <Center>
             <motion.div
               initial="hidden"
@@ -135,16 +143,44 @@ const Home: NextPage = () => {
               // transition={{ duration }}
             >
               <VStack spacing={8}>
-                <Text fontSize={"xl"} textAlign="center" pt={4}>
+                <Text
+                  fontSize={["lg", "lg", "2xl", "3xl"]}
+                  textAlign="center"
+                  pt={4}
+                >
                   Try a demo of the app here and see for yourself...
                 </Text>
-                <AppDemo />
-                <Box>
-                  <Text fontStyle="italic" textAlign="center">
-                    *Please note this demo does not replicate the look and feel
-                    of the mobile application and is only meant as a guide.
-                  </Text>
+                <Box display={["block", "block", "none", "none"]}>
+                  <Button
+                    colorScheme="twitter"
+                    size="lg"
+                    onClick={() => setOpenModal(true)}
+                  >
+                    Try demo
+                  </Button>
+                  <Modal
+                    onClose={() => setOpenModal(false)}
+                    size={"full"}
+                    isOpen={openModal}
+                  >
+                    <ModalOverlay />
+                    <ModalContent>
+                      <ModalHeader>Powley Pharma Quizzer Demo</ModalHeader>
+                      <ModalCloseButton />
+                      <ModalBody>
+                        <AppDemo />
+                      </ModalBody>
+                    </ModalContent>
+                  </Modal>
                 </Box>
+                <Box display={["none", "none", "block", "block"]}>
+                  <AppDemo />
+                  <Box></Box>
+                </Box>
+                <Text fontStyle="italic" textAlign="center" pb={4}>
+                  *Please note this demo does not replicate the look and feel of
+                  the mobile application and is only meant as a guide.
+                </Text>
               </VStack>
             </motion.div>
           </Center>

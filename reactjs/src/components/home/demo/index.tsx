@@ -28,28 +28,13 @@ export function AppDemo() {
         backgroundImage={"./static/images/phone-background.png"}
         backgroundPosition="center"
         backgroundSize="cover"
-        height={["75vh", "800px"]}
+        height={["95vh", "800px"]}
         width={["95vw", "400px"]}
         borderRadius="1rem"
         border="5px solid black"
         flexDirection="column"
       >
-        <Box
-          overflowY="scroll"
-          flex={1}
-          css={{
-            "&::-webkit-scrollbar": {
-              width: "0px",
-            },
-            "&::-webkit-scrollbar-track": {
-              width: "0px",
-            },
-            "&::-webkit-scrollbar-thumb": {
-              background: "000",
-              borderRadius: "0px",
-            },
-          }}
-        >
+        <Box overflowX="scroll" flex={1}>
           {getActivePage(
             activePage,
             setNextPage,

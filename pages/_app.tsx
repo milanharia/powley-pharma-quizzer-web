@@ -8,9 +8,8 @@ import { Header } from "../components/ui/header";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
-      <Header />
       <Component {...pageProps} />
-      {/* <Footer /> */}
+      <Footer />
     </ChakraProvider>
   );
 }
