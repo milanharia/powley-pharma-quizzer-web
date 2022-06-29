@@ -1,7 +1,6 @@
-import { Box, Fade, Heading, Text } from "@chakra-ui/react";
+import { Box, Heading, Text } from "@chakra-ui/react";
 import { NextPage } from "next";
 import Head from "next/head";
-import { Footer } from "../components/ui/footer";
 import { Header } from "../components/ui/header";
 
 const About: NextPage = () => {
@@ -43,7 +42,6 @@ const About: NextPage = () => {
           </Text>
         </Box>
       </main>
-      <Footer />
     </>
   );
 };

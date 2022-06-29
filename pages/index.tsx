@@ -20,7 +20,6 @@ import Head from "next/head";
 import { NextPage } from "next/types";
 import { useState } from "react";
 import { AppDemo, AppInformation } from "../components/home";
-import { Footer } from "../components/ui/footer";
 import { Header } from "../components/ui/header";
 
 const Home: NextPage = () => {
@@ -32,15 +31,12 @@ const Home: NextPage = () => {
       <Head>
         <title>Powley Pharma - Created by the students, for the students</title>
         <meta name="description" content="Test your pharmacy knowledge" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0"
-        ></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
         <Flex
-          h={"calc(100vh)"}
+          h="100vh"
           w="100vw"
           flexDirection="column"
           backgroundImage={
@@ -61,7 +57,7 @@ const Home: NextPage = () => {
             gap="4"
           >
             <motion.div
-              initial={{ opacity: 0, y: 0, scaleX: 0.75 }}
+              initial={{ opacity: 0, y: 20, scaleX: 1 }}
               animate={{ opacity: 1, y: 0, scaleX: 1 }}
               transition={{ duration: 0.5, type: "tween" }}
             >
@@ -149,7 +145,7 @@ const Home: NextPage = () => {
             View your results and the questions you completed.
           </Text>
         </AppInformation>
-        <Box h={["auto", "auto", "100vh", "100vh"]} py={16} px={4}>
+        <Box minH={["auto", "auto", "100vh", "100vh"]} py={16} px={4}>
           <Center>
             <motion.div
               initial="hidden"
@@ -190,7 +186,6 @@ const Home: NextPage = () => {
                 </Box>
                 <Box display={["none", "none", "block", "block"]}>
                   <AppDemo />
-                  <Box></Box>
                 </Box>
                 <Text fontStyle="italic" textAlign="center" pb={4}>
                   *Please note this demo does not replicate the look and feel of
@@ -201,7 +196,6 @@ const Home: NextPage = () => {
           </Center>
         </Box>
       </main>
-      <Footer />
     </>
   );
 };

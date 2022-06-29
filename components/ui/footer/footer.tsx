@@ -23,8 +23,9 @@ export function Footer() {
       flexDir={["column", "row"]}
       bg={colorMode === "light" ? "light" : "dark"}
       justifyContent={["center", "space-between"]}
-      p={8}
-      mt={8}
+      p={4}
+      height="5rem"
+      as="footer"
     >
       <Text m="auto">&copy; Powley Pharma - All rights reserved</Text>
       <HStack spacing={3} m="auto" pt={["0.5rem", 0]}>

@@ -14,6 +14,10 @@ body {
   overflow-x: hidden;
 }
 
+main {
+  min-height: calc(100vh - 4rem - 5rem);
+}
+
 .answerButton {
   outline: none;
   background-color: rgba(224, 224, 224, 0.658);

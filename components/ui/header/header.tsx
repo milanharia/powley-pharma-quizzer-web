@@ -25,15 +25,12 @@ export function Header() {
   return (
     <Flex
       as={"header"}
-      position={["unset", "sticky"]}
       top="0"
       height="4rem"
       zIndex={999}
       justifyContent={"space-between"}
       alignItems="center"
       background="none"
-      // bg={colorMode === "light" ? "white" : "dark"}
-      // boxShadow="0px 3px 5px 0px rgba(0,0,0,0.05)"
     >
       <Flex>
         <Link href="/" passHref>
@@ -59,12 +56,9 @@ export function Header() {
         padding={8}
         alignItems="center"
       >
-        {/* <Link href="#" passHref>
-          <ChakraLink fontSize="2xl">Our App</ChakraLink>
+        <Link href="/" passHref>
+          <ChakraLink fontSize="2xl">Home</ChakraLink>
         </Link>
-        <Link href="#" passHref>
-          <ChakraLink fontSize="2xl">Quiz</ChakraLink>
-        </Link> */}
         <Link href="/about" passHref>
           <ChakraLink fontSize="2xl">About Us</ChakraLink>
         </Link>
@@ -97,12 +91,6 @@ export function Header() {
           <DrawerHeader>Powley Pharma Quizzer</DrawerHeader>
           <DrawerBody>
             <Flex gap={4} flexDirection="column">
-              {/* <Link href="#" passHref>
-                <ChakraLink fontSize="2xl">Our App</ChakraLink>
-              </Link>
-              <Link href="#" passHref>
-                <ChakraLink fontSize="2xl">Quiz</ChakraLink>
-              </Link> */}
               <Link href="/" passHref>
                 <ChakraLink fontSize="2xl">Home</ChakraLink>
               </Link>
